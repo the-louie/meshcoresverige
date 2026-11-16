@@ -1,0 +1,16 @@
+# Monthly: do the counties' own sites still answer? A failure means a county's `site` may need
+# emptying so that the county gets its pages on meshcore-swe.se again (plan 6.6).
+name: county sites
+on:
+  schedule:
+    - cron: "23 5 1 * *"
+  workflow_dispatch:
+jobs:
+  sites:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/check-sites.mjs
