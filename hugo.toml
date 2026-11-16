@@ -14,6 +14,7 @@ enableRobotsTXT = true
   # The national site (plan: planning/meshcore-jkp.se/national-site-plan.md in the workspace): every
   # county from data/lan/<scb>.toml, the county chosen in the browser, a front page per county.
   national = true
+  lanData = "https://github.com/the-louie/meshcore-swe/blob/main/CONTRIBUTING.md"
 
 # No county is fixed here: the visitor's choice decides. Scope "se" until one is chosen.
 [params.region]
