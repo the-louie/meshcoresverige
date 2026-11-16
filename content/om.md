@@ -20,10 +20,10 @@ Sidan är byggd på mallen
 ## Länens uppgifter
 
 Varje län har en egen datafil i
-[the-louie/meshcore-swe](https://github.com/the-louie/meshcore-swe) under `data/lan/`. Vem som helst
+[the-louie/meshcoresverige](https://github.com/the-louie/meshcoresverige) under `data/lan/`. Vem som helst
 kan rätta eller lägga till uppgifter (kanaler, grupper, platser där en repeater behövs) med en pull
 request; hur står i
-[CONTRIBUTING.md](https://github.com/the-louie/meshcore-swe/blob/main/CONTRIBUTING.md).
+[CONTRIBUTING.md](https://github.com/the-louie/meshcoresverige/blob/main/CONTRIBUTING.md).
 
 ## Vem sköter sidan
 
@@ -32,7 +32,7 @@ Sidan sköts av The Louie ([the-louie](https://github.com/the-louie) på GitHub)
 ## Hör av dig eller bidra
 
 - **Fel eller förslag på sidan:** skapa ett ärende på
-  [GitHub](https://github.com/the-louie/meshcore-swe/issues).
+  [GitHub](https://github.com/the-louie/meshcoresverige/issues).
 - **Frågor om MeshCore i hela Sverige:** [Sweden Mesh Discord](https://discord.gg/gchSzHkPGG).
 
 ## Vem har bidragit

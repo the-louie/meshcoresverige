@@ -1,5 +1,5 @@
 {
-  "name": "meshcore-swe",
+  "name": "meshcoresverige",
   "private": true,
   "type": "module",
   "description": "Checks for the county files and the Pages Functions; the site itself needs no Node.",

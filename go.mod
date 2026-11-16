@@ -1,4 +1,4 @@
-module github.com/the-louie/meshcore-swe
+module github.com/the-louie/meshcoresverige
 
 go 1.27.4
 
