@@ -1,0 +1,8 @@
+# Blekinge län. The county's name and region (scope) come from meshcore-se-regioner, the
+# neighbours from its grannlan.csv and the map area from se-lan.geojson; only what cannot be
+# derived is written here. Every key is described in CONTRIBUTING.md.
+scb     = "10"
+slug    = "blekinge"
+short   = "Blekinge"
+site    = ""
+checked = 2026-11-16
