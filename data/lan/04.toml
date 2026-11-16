@@ -6,3 +6,7 @@ slug    = "södermanland"
 short   = "Södermanland"
 site    = ""
 checked = 2026-11-16
+
+[[groups]]
+  name = "NYO-Mesh"
+  url  = "https://nyo-mesh.se/"

@@ -6,3 +6,11 @@ slug    = "kalmar"
 short   = "Kalmar"
 site    = ""
 checked = 2026-11-16
+
+[[groups]]
+  name = "Kalmar-Mesh"
+  url  = "https://kalmar-mesh.se/"
+
+[[groups]]
+  name = "Ölands Radioamatörer SK7RN"
+  url  = "https://www.sk7rn.se/"

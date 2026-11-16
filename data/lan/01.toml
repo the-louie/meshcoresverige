@@ -6,3 +6,11 @@ slug    = "stockholm"
 short   = "Stockholm"
 site    = ""
 checked = 2026-11-16
+
+[[groups]]
+  name = "STHLM-MESH"
+  url  = "https://sthlm-mesh.se/"
+
+[[groups]]
+  name = "MESH-Roslagen"
+  url  = "https://mesh-roslagen.se/"

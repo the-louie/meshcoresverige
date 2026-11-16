@@ -6,3 +6,7 @@ slug    = "östergötland"
 short   = "Östergötland"
 site    = ""
 checked = 2026-11-16
+
+[[groups]]
+  name = "LKPG-Mesh"
+  url  = "https://linkoping-mesh.se/"
