@@ -25,7 +25,7 @@ test("the cookie's county is read strictly", () => {
   assert.equal(chosenCounty(""), null);
 });
 test("a saved county's front page at /, not cached for others", async () => {
-  const c = ctx("https://meshcore-swe.se/", "lan=12");
+  const c = ctx("https://meshcoresverige.se/", "lan=12");
   const r = await onRequestGet(c);
   assert.equal(await r.text(), "county /sk%C3%A5ne/");
   assert.equal(r.status, 200);
@@ -34,7 +34,7 @@ test("a saved county's front page at /, not cached for others", async () => {
   assert.equal(r.headers.get("Location"), null, "no redirect: the address stays /");
 });
 test("Sverige, no cookie, ?lan= or a county without a page: the ordinary /", async () => {
-  for (const [url, cookie] of [["https://meshcore-swe.se/", "lan=se"], ["https://meshcore-swe.se/", ""], ["https://meshcore-swe.se/?lan=se", "lan=12"], ["https://meshcore-swe.se/", "lan=06"]]) {
+  for (const [url, cookie] of [["https://meshcoresverige.se/", "lan=se"], ["https://meshcoresverige.se/", ""], ["https://meshcoresverige.se/?lan=se", "lan=12"], ["https://meshcoresverige.se/", "lan=06"]]) {
     const r = await onRequestGet(ctx(url, cookie));
     assert.equal(await r.text(), "sverige", `${url} ${cookie}`);
     assert.equal(r.headers.get("Vary"), "Cookie");
@@ -43,6 +43,6 @@ test("Sverige, no cookie, ?lan= or a county without a page: the ordinary /", asy
 
 test("the Plausible proxy stays shut until the site's script path is set", async () => {
   const { onRequest } = await import("../functions/p/[[path]].js");
-  const r = await onRequest({ request: new Request("https://meshcore-swe.se/p/s.js"), params: { path: ["s.js"] }, env: {} });
+  const r = await onRequest({ request: new Request("https://meshcoresverige.se/p/s.js"), params: { path: ["s.js"] }, env: {} });
   assert.equal(r.status, 404);
 });

@@ -1,6 +1,6 @@
 ---
 title: "Om sidan"
-description: "Om meshcore-swe.se, sidan för MeshCore i hela Sverige: vem som sköter den, varför den finns och hur du rättar ditt läns uppgifter."
+description: "Om meshcoresverige.se, sidan för MeshCore i hela Sverige: vem som sköter den, varför den finns och hur du rättar ditt läns uppgifter."
 lead: false
 ---
 

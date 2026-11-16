@@ -1,5 +1,5 @@
 # Monthly: do the counties' own sites still answer? A failure means a county's `site` may need
-# emptying so that the county gets its pages on meshcore-swe.se again (plan 6.6).
+# emptying so that the county gets its pages on meshcoresverige.se again (plan 6.6).
 name: county sites
 on:
   schedule:

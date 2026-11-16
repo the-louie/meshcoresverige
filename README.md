@@ -1,4 +1,4 @@
-# meshcore-swe.se
+# meshcoresverige.se
 
 The national MeshCore website for Sweden: the guides and wizards of the shared template, a
 county chosen in the browser, and a front page with local pages for every county that has no

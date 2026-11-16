@@ -10,7 +10,7 @@
 // Pages secrets) opens exactly these two paths and nothing else.
 
 const UPSTREAM = "https://stats.phetast.nu";
-// The site's Plausible script path (/js/pa-<id>.js), a Pages variable: the site for meshcore-swe.se is
+// The site's Plausible script path (/js/pa-<id>.js), a Pages variable: the site for meshcoresverige.se is
 // made when the domain exists (backlog NATIONAL-7at). Unset, the proxy answers 404 and nothing loads.
 function scriptPath(env) { return env.PLAUSIBLE_SCRIPT || ""; }
 

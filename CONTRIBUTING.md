@@ -16,10 +16,10 @@ meshcore-se-regioner: sidan följer listan inom ett dygn.
 | nyckel | krävs | vad |
 |---|---|---|
 | `scb` | ja | SCB-koden, samma som filnamnet |
-| `slug` | ja | adressen, `meshcore-swe.se/<slug>/`: länets namn utan "län", med å, ä, ö och bindestreck |
+| `slug` | ja | adressen, `meshcoresverige.se/<slug>/`: länets namn utan "län", med å, ä, ö och bindestreck |
 | `short` | ja | kort namn i rubriker, som "Kalmar" |
 | `checked` | ja | dagen någon senast kontrollerade filen, `ÅÅÅÅ-MM-DD`; visas på länets sida |
-| `site` | nej | länets egen MeshCore-sida (`https://…/`). Med en egen sida visar meshcore-swe.se inga egna sidor för länet utan länkar dit |
+| `site` | nej | länets egen MeshCore-sida (`https://…/`). Med en egen sida visar meshcoresverige.se inga egna sidor för länet utan länkar dit |
 | `iata` | nej | kartområdets kod, om den skiljer sig från mallens lista |
 | `center`, `zoom` | nej | kartans start, om länets gräns ger fel utsnitt |
 | `place` | nej | en välkänd plats i länet, för namnexemplet (`SE-KAL-<place>`) |
