@@ -34,6 +34,8 @@ enableRobotsTXT = true
 # and the map read it; only REST and the read-only WebSocket are used.
 [params.beacon]
   url = "https://beacon.meshcore-jkp.se"
+  # One seed list for every map area (Q7.9): beacon.meshat.se, until ours has a year of data.
+  seeds = ["https://beacon.meshat.se"]
 
 [params.analytics]
   plausible = false          # on when the domain has its Plausible site (backlog NATIONAL-7at)
