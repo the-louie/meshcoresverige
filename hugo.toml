@@ -16,12 +16,13 @@ enableRobotsTXT = true
   national = true
   lanData = "https://github.com/the-louie/meshcore-swe/blob/main/CONTRIBUTING.md"
 
-# No county is fixed here: the visitor's choice decides. Scope "se" until one is chosen.
+# No county is fixed here: the visitor's choice decides. Scope "se" until one is chosen. The Sverige map
+# reads every map area, SFT too (heard, but no county's; Q7.9: on the Sverige map only).
 [params.region]
   scb = ""
   name = "Sverige"
   short = "Sverige"
-  iatas = ["BLE", "GOT", "GVX", "HAD", "JKG", "KLR", "KSD", "LLA", "LPI", "MMX", "NYO", "ORB", "OSD", "RNB", "SDL", "STO", "UME", "VBY", "VST", "VXO"]
+  iatas = ["BLE", "GOT", "GVX", "HAD", "JKG", "KLR", "KSD", "LLA", "LPI", "MMX", "NYO", "ORB", "OSD", "RNB", "SDL", "STO", "UME", "VBY", "VST", "VXO", "SFT"]
   scope = "se"
   center = [62.5, 16.5]
   zoom = 4.3
