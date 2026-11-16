@@ -40,3 +40,9 @@ test("Sverige, no cookie, ?lan= or a county without a page: the ordinary /", asy
     assert.equal(r.headers.get("Vary"), "Cookie");
   }
 });
+
+test("the Plausible proxy stays shut until the site's script path is set", async () => {
+  const { onRequest } = await import("../functions/p/[[path]].js");
+  const r = await onRequest({ request: new Request("https://meshcore-swe.se/p/s.js"), params: { path: ["s.js"] }, env: {} });
+  assert.equal(r.status, 404);
+});
