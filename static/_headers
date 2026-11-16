@@ -1,0 +1,16 @@
+# Cloudflare Pages response headers, as on meshcore-jkp.se. Script policy is report-only until the
+# national inline scripts' hashes are listed (template CHANGELOG names them per release).
+/*
+  Content-Security-Policy: object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), usb=(), bluetooth=(), payment=(), serial=(self)
+  Strict-Transport-Security: max-age=300
+
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+/beacon/*
+  Cache-Control: public, max-age=31536000, immutable
+/lib/*
+  Cache-Control: public, max-age=31536000, immutable

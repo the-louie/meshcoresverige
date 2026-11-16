@@ -1,0 +1,68 @@
+baseURL = "https://meshcore-swe.se/"
+title = "MeshCore Sverige"
+locale = "sv"
+defaultContentLanguage = "sv"
+timeout = "40s"
+disableKinds = ["taxonomy", "term", "rss"]
+enableRobotsTXT = true
+
+[module]
+  [[module.imports]]
+    path = "github.com/sweden-mesh/meshcore-regional-template"
+
+[params]
+  # The national site (plan: planning/meshcore-jkp.se/national-site-plan.md in the workspace): every
+  # county from data/lan/<scb>.toml, the county chosen in the browser, a front page per county.
+  national = true
+
+# No county is fixed here: the visitor's choice decides. Scope "se" until one is chosen.
+[params.region]
+  scb = ""
+  name = "Sverige"
+  short = "Sverige"
+  iatas = ["BLE", "GOT", "GVX", "HAD", "JKG", "KLR", "KSD", "LLA", "LPI", "MMX", "NYO", "ORB", "OSD", "RNB", "SDL", "STO", "UME", "VBY", "VST", "VXO"]
+  scope = "se"
+  center = [62.5, 16.5]
+  zoom = 4.3
+
+[params.naming]
+  pattern = ""
+  example = ""
+
+# Today's public Beacon API, until the neutral name exists (backlog NATIONAL-7as): the county pages
+# and the map read it; only REST and the read-only WebSocket are used.
+[params.beacon]
+  url = "https://beacon.meshcore-jkp.se"
+
+[params.analytics]
+  plausible = false          # on when the domain has its Plausible site (backlog NATIONAL-7at)
+  script = "/p/s.js"
+  api = "/p/event"
+
+[[params.chats]]
+  name = "Sweden Mesh Discord"
+  url = "https://discord.gg/gchSzHkPGG"
+
+[params.contributors]
+  repos = ["sweden-mesh/meshcore-regional-template", "the-louie/meshcore-swe"]
+
+[[menus.main]]
+  name = "Guider"
+  pageRef = "/guider"
+  weight = 10
+[[menus.main]]
+  name = "Wizards"
+  pageRef = "/wizard"
+  weight = 15
+[[menus.main]]
+  name = "Felsökning"
+  pageRef = "/felsokning"
+  weight = 17
+[[menus.main]]
+  name = "Frågor"
+  pageRef = "/fragor"
+  weight = 18
+[[menus.main]]
+  name = "Om sidan"
+  pageRef = "/om"
+  weight = 20
