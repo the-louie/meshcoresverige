@@ -26,6 +26,13 @@ scripts/preview.sh server       # local preview against ../meshcore-regional-tem
 npm test                        # county files and functions
 ```
 
+## Functions and checks
+
+- `functions/index.js`: `/` answers with the saved county's front page (cookie `lan`), the address
+  unchanged; `functions/p/`: the Plausible proxy, shut until `PLAUSIBLE_SCRIPT` is set.
+- `npm test`: the county files' schema and the functions.
+- `scripts/check-sites.mjs` (monthly in CI): the counties' own sites still answer.
+
 ## Deploy
 
 `.github/workflows/deploy.yml` builds on every push and pull request. The Cloudflare Pages
