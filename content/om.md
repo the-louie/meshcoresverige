@@ -1,6 +1,6 @@
 ---
 title: "Om sidan"
-description: "Om meshcoresverige.se, sidan för MeshCore i hela Sverige: vem som sköter den, varför den finns och hur du rättar ditt läns uppgifter."
+description: "Om meshcoresverige.se, sidan för MeshCore i hela Sverige: vem som sköter den, varför den finns och hur du bidrar med uppgifter om ditt län."
 lead: false
 ---
 
@@ -20,9 +20,9 @@ Sidan är byggd på mallen
 ## Länens uppgifter
 
 Varje län har en egen datafil i
-[the-louie/meshcoresverige](https://github.com/the-louie/meshcoresverige) under `data/lan/`. Vem som helst
-kan rätta eller lägga till uppgifter (kanaler, grupper, platser där en repeater behövs) med en pull
-request; hur står i
+[the-louie/meshcoresverige](https://github.com/the-louie/meshcoresverige) under `data/lan/`. Du kan enkelt
+bidra med mer information (kanaler, grupper, platser där en repeater behövs), eller rätta något som
+blivit fel, med en pull request; hur står i
 [CONTRIBUTING.md](https://github.com/the-louie/meshcoresverige/blob/main/CONTRIBUTING.md).
 
 ## Vem sköter sidan

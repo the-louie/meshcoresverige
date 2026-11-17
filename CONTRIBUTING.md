@@ -1,4 +1,7 @@
-# Rätta ditt läns uppgifter
+# Bidra med uppgifter om ditt län
+
+Vet du något om MeshCore i ditt län som saknas på sidan? Du kan enkelt bidra med mer information:
+kanaler, grupper och platser där en repeater behövs.
 
 Varje län har en egen fil i `data/lan/`, med länets SCB-kod som namn (`08.toml` är Kalmar län).
 En pull request ändrar en fil. Vem som helst kan föreslå en ändring; sidans ansvarige godkänner.

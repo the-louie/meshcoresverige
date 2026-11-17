@@ -5,7 +5,21 @@ scb     = "08"
 slug    = "kalmar"
 short   = "Kalmar"
 site    = ""
-checked = 2026-11-16
+checked = 2026-11-17
+
+# Published by Kalmar-Mesh on https://kalmar-mesh.se/#information ("Lokala kanaler"), checked
+# 2026-11-17; the group recommends the region se08 for them.
+[[channels]]
+  name    = "#kalmar"
+  purpose = "Länets chattkanal: frågor, diskussion och lokal samordning"
+
+[[channels]]
+  name    = "#kalmar-sensors"
+  purpose = "Mätvärden och telemetri från sensorer i Kalmar"
+
+[[channels]]
+  name    = "#kalmar-alerts"
+  purpose = "Larm från sensorer i Kalmar, när ett larmvärde passeras"
 
 [[groups]]
   name = "Kalmar-Mesh"
