@@ -6,3 +6,4 @@ slug    = "jönköping"
 short   = "Jönköping"
 site    = "https://meshcore-jkp.se/"
 checked = 2026-11-16
+community = { name = "JKPG-Mesh", url = "https://jkpg-mesh.se/" }   # the county's community site, a button beside "Se kartan" (B-306)

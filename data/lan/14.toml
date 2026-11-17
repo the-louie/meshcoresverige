@@ -6,3 +6,4 @@ slug    = "västra-götaland"
 short   = "Västra Götaland"
 site    = "https://meshcore-vgr.se/"
 checked = 2026-11-16
+community = { name = "GBG Mesh", url = "https://gbg-mesh.se/" }   # the county's community site, a button beside "Se kartan" (B-306)

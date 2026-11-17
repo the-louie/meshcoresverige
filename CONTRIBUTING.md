@@ -29,7 +29,7 @@ meshcore-se-regioner: sidan följer listan inom ett dygn.
 | `meshmapper` | nej | länets MeshMapper-karta |
 | `text` | nej | ett eget stycke på länets sida, utan "vi" (läsaren vet inte vilka "vi" är) |
 | `text_by` | med `text` | vem som skrev stycket; visas som "Skrivet av …" |
-| `community` | nej | länets samlade gemenskapssida, `{ name = "…", url = "https://…" }`: en knapp bredvid "Se kartan" på länets sida |
+| `community` | nej | länets samlade gemenskapssida, `{ name = "…", url = "https://…" }`: en knapp bredvid "Se kartan" på länets sida, och länets enda rad i Sverige-vyns Gemenskap-kolumn |
 
 Listor, en per post:
 
