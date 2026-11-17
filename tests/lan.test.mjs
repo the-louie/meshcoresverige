@@ -6,7 +6,7 @@ import { readdirSync, readFileSync } from "node:fs";
 
 const DIR = new URL("../data/lan/", import.meta.url);
 const SCB = ["01", "03", "04", "05", "06", "07", "08", "09", "10", "12", "13", "14", "17", "18", "19", "20", "21", "22", "23", "24", "25"];
-const TOP = { scb: "s", slug: "s", short: "s", site: "s", checked: "d", iata: "s", center: "a", zoom: "n", place: "s", meshmapper: "s", text: "s", text_by: "s" };
+const TOP = { scb: "s", slug: "s", short: "s", site: "s", checked: "d", iata: "s", center: "a", zoom: "n", place: "s", meshmapper: "s", text: "s", text_by: "s", community: "link" };
 const TABLES = {
   channels: { name: "s", purpose: "s", note: "s" },
   groups: { name: "s", url: "s" },
@@ -35,6 +35,11 @@ export function parse(src) {
     if (type === "s") { if (!/^"([^"\\]|\\.)*"$/.test(v)) throw new Error(`line ${i + 1}: ${k} must be a "string"`); cur[k] = JSON.parse(v); }
     else if (type === "n") { if (!/^-?\d+(\.\d+)?$/.test(v)) throw new Error(`line ${i + 1}: ${k} must be a number`); cur[k] = Number(v); }
     else if (type === "d") { if (!/^\d{4}-\d\d-\d\d$/.test(v)) throw new Error(`line ${i + 1}: ${k} must be a date YYYY-MM-DD`); cur[k] = v; }
+    else if (type === "link") {
+      const l = v.match(/^\{\s*name\s*=\s*("(?:[^"\\]|\\.)*")\s*,\s*url\s*=\s*("(?:[^"\\]|\\.)*")\s*\}$/);
+      if (!l) throw new Error(`line ${i + 1}: ${k} must be { name = "…", url = "…" }`);
+      cur[k] = { name: JSON.parse(l[1]), url: JSON.parse(l[2]) };
+    }
     else if (type === "a") { if (!/^\[\s*(-?\d+(\.\d+)?\s*(,\s*-?\d+(\.\d+)?\s*)*)?\]$/.test(v)) throw new Error(`line ${i + 1}: ${k} must be [numbers]`); cur[k] = JSON.parse(v); }
   });
   return out;
@@ -49,6 +54,7 @@ export function checkCounty(file, c) {
   if (!c.short) errs.push(`${file}: short is missing`);
   if (!c.checked) errs.push(`${file}: checked is missing`);
   if (c.site && !/^https:\/\/[^\s"]+\/$/.test(c.site)) errs.push(`${file}: site must be an https address ending in /`);
+  if (c.community && !/^https:\/\/[^\s"]+$/.test(c.community.url)) errs.push(`${file}: community.url must be an https address`);
   if (c.meshmapper && !/^https:\/\//.test(c.meshmapper)) errs.push(`${file}: meshmapper must be an https address`);
   if (c.text_by && !c.text) errs.push(`${file}: text_by without text`);
   if (c.center && c.center.length !== 2) errs.push(`${file}: center is [lat, lon]`);

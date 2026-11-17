@@ -4,8 +4,9 @@
 scb     = "05"
 slug    = "östergötland"
 short   = "Östergötland"
-site    = ""
+site    = "https://meshcore-ost.se/"
 checked = 2026-11-16
+community = { name = "Linköping-Mesh", url = "https://linkoping-mesh.se/" }   # the county's community site, a button beside "Se kartan" (B-306)
 
 [[groups]]
   name = "LKPG-Mesh"

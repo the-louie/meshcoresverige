@@ -6,6 +6,7 @@ slug    = "södermanland"
 short   = "Södermanland"
 site    = ""
 checked = 2026-11-16
+community = { name = "NYO-Mesh", url = "https://nyo-mesh.se/" }   # the county's community site, a button beside "Se kartan" (B-306)
 
 [[groups]]
   name = "NYO-Mesh"

@@ -6,6 +6,7 @@ slug    = "kalmar"
 short   = "Kalmar"
 site    = ""
 checked = 2026-11-17
+community = { name = "Kalmar-Mesh", url = "https://kalmar-mesh.se/" }   # the county's community site, a button beside "Se kartan" (B-306)
 
 # Published by Kalmar-Mesh on https://kalmar-mesh.se/#information ("Lokala kanaler"), checked
 # 2026-11-17; the group recommends the region se08 for them.

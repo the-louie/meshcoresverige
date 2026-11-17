@@ -4,5 +4,5 @@
 scb     = "14"
 slug    = "västra-götaland"
 short   = "Västra Götaland"
-site    = ""
+site    = "https://meshcore-vgr.se/"
 checked = 2026-11-16

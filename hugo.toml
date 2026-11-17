@@ -48,6 +48,11 @@ enableRobotsTXT = true
   name = "Sweden Mesh Discord"
   url = "https://discord.gg/gchSzHkPGG"
 
+# Other national links (footer and the Sverige page's Gemenskap column, B-318).
+[[params.links]]
+  name = "meshat.se"
+  url = "https://meshat.se/"
+
 [params.contributors]
   repos = ["sweden-mesh/meshcore-regional-template", "the-louie/meshcoresverige"]
 

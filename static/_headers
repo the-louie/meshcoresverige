@@ -6,7 +6,7 @@
 # 'wasm-unsafe-eval' is for Pagefind; blob: workers for MapLibre.
 # HSTS raised step by step: 300, 86400 (2026-11-16), then 31536000.
 /*
-  Content-Security-Policy: object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'sha256-JY+HQEUVCvAfSDIkt62Af7zLBs3AvpUTZSQsgf1sC5o=' 'sha256-baA9qojJ3UDpPMd2+kFcIgQNuTH5DT4LpY+8TMIdh40=' 'sha256-gKsEUc+y37hY6uZEmQGsW78WQsqk3PgxBOQ7kumneoA=' 'sha256-DSwjoUOof6idJqQ1AocwIA+7jBFvYEVS0Hy/1ZK+Lf4=' 'wasm-unsafe-eval' 'report-sample'; worker-src 'self' blob:
+  Content-Security-Policy: object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'sha256-JY+HQEUVCvAfSDIkt62Af7zLBs3AvpUTZSQsgf1sC5o=' 'sha256-baA9qojJ3UDpPMd2+kFcIgQNuTH5DT4LpY+8TMIdh40=' 'sha256-WCqeYLx0boiyY3NlWWTQQSDgl2fq7fW15U4dc8OhG88=' 'sha256-DSwjoUOof6idJqQ1AocwIA+7jBFvYEVS0Hy/1ZK+Lf4=' 'wasm-unsafe-eval' 'report-sample'; worker-src 'self' blob:
   X-Frame-Options: DENY
   Permissions-Policy: camera=(), microphone=(), geolocation=(), usb=(), bluetooth=(), payment=(), serial=(self)
   Strict-Transport-Security: max-age=86400
