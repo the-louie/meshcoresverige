@@ -1,8 +1,8 @@
 // The bare address with a saved county (plan §6.8, Q7.4): / answers with that county's front page,
 // and the address stays /. The cookie "lan" holds the visitor's choice (written by the site's
 // script, never sent anywhere else); /lan/pages.json, built by Hugo, maps each SCB code to its
-// county page. Sverige (se), no cookie, ?lan=…, an unknown code, or a county with its own site (no
-// page here) get the ordinary / page.
+// county page. A county with its own site maps to that site's address, and / answers 302 there
+// (B-327). Sverige (se), no cookie, ?lan=… or an unknown code get the ordinary / page.
 
 export function chosenCounty(cookieHeader) {
   const m = /(?:^|;\s*)lan=(\d\d)(?:;|$)/.exec(cookieHeader || "");
@@ -19,6 +19,7 @@ export async function onRequestGet({ request, env, next }) {
     path = map[scb] || null;
   } catch (e) { /* no map: the ordinary page */ }
   if (!path) return withVary(await next());
+  if (/^https:\/\//.test(path)) return withVary(new Response(null, { status: 302, headers: { Location: path } }));
   const page = await env.ASSETS.fetch(new URL(path, url));
   if (!page.ok) return withVary(await next());
   const headers = new Headers(page.headers);
