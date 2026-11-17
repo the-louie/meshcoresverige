@@ -2,4 +2,4 @@ module github.com/the-louie/meshcoresverige
 
 go 1.27.4
 
-require github.com/sweden-mesh/meshcore-regional-template v0.48.1 // indirect
+require github.com/sweden-mesh/meshcore-regional-template v0.49.0 // indirect
