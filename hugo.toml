@@ -57,8 +57,10 @@ enableRobotsTXT = true
   url = "https://meshat.se/"
 # meshat.se's forum, its MeshCore category (UX-SV-D5, operator 2026-11-18): the place for questions
 # that need more than a chat line.
+# "Forum" in the Sverige page's Gemenskap column (B-345); the footer keeps the longer name.
 [[params.links]]
-  name = "Forumet på meshat.se (MeshCore)"
+  name = "Forum"
+  footer = "Forumet på meshat.se (MeshCore)"
   url = "https://forum.meshat.se/c/meshcore/6"
 
 [params.contributors]
