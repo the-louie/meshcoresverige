@@ -15,6 +15,9 @@ enableRobotsTXT = true
   # county from data/lan/<scb>.toml, the county chosen in the browser, a front page per county.
   national = true
   lanData = "https://github.com/the-louie/meshcoresverige/blob/main/CONTRIBUTING.md"
+  # The site's own repository only (SEO-SV-15, SEO-T3): never a community or chat link.
+  sameAs = ["https://github.com/the-louie/meshcoresverige"]
+  editURL = "https://github.com/the-louie/meshcoresverige/edit/main/"   # "Rätta sidan" on the site's own pages (UX-SV-6)
 
 # No county is fixed here: the visitor's choice decides. Scope "se" until one is chosen. The Sverige map
 # reads every map area, SFT too (heard, but no county's; Q7.9: on the Sverige map only).
@@ -52,6 +55,11 @@ enableRobotsTXT = true
 [[params.links]]
   name = "meshat.se"
   url = "https://meshat.se/"
+# meshat.se's forum, its MeshCore category (UX-SV-D5, operator 2026-11-18): the place for questions
+# that need more than a chat line.
+[[params.links]]
+  name = "Forumet på meshat.se (MeshCore)"
+  url = "https://forum.meshat.se/c/meshcore/6"
 
 [params.contributors]
   repos = ["sweden-mesh/meshcore-regional-template", "the-louie/meshcoresverige"]
@@ -61,7 +69,7 @@ enableRobotsTXT = true
   pageRef = "/guider"
   weight = 10
 [[menus.main]]
-  name = "Wizards"
+  name = "Steg för steg"
   pageRef = "/wizard"
   weight = 15
 [[menus.main]]
