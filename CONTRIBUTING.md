@@ -30,6 +30,7 @@ meshcore-se-regioner: sidan följer listan inom ett dygn.
 | `text` | nej | ett eget stycke på länets sida, utan "vi" (läsaren vet inte vilka "vi" är) |
 | `text_by` | med `text` | vem som skrev stycket; visas som "Skrivet av …" |
 | `community` | nej | länets samlade gemenskapssida, `{ name = "…", url = "https://…" }`: en knapp bredvid "Se kartan" på länets sida, och länets enda rad i Sverige-vyns Gemenskap-kolumn |
+| `naming` | nej | länsgruppens eget format för nodnamn, `{ format = "…", example = "…", source = "https://…", group = "…" }`: visas på länets Kom igång före det nationella förslaget `SE<NN>-Plats` |
 
 Listor, en per post:
 
@@ -41,6 +42,12 @@ Listor, en per post:
 [[groups]]            # grupper och chattar för länet
   name = "Gruppens namn"
   url  = "https://…"
+
+[[regions_extra]]     # en lokal region som en grupp lägger till utöver länets, som en kommunregion
+  scope  = "se0880"
+  note   = "Kalmar kommun"
+  source = "https://…"
+  group  = "Gruppens namn"
 
 [[wanted]]            # platser där en repeater skulle göra störst skillnad
   name = "Platsens namn"

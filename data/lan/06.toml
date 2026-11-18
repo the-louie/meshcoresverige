@@ -5,8 +5,13 @@ scb     = "06"
 slug    = "jönköping"
 short   = "Jönköping"
 site    = ""
-checked = 2026-11-16
+checked = 2026-11-18
 community = { name = "JKPG-Mesh", url = "https://jkpg-mesh.se/" }   # the county's community site, a button beside "Se kartan" (B-306)
+
+# The county's chat channel, as meshcore-jkp.se lists it (aligned 2026-11-18).
+[[channels]]
+  name    = "#jonkoping"
+  purpose = "Länets chattkanal"
 
 # Groups: surveyed 2026-11-18 from meshat.se Regionala sidor, the groups' own sites, ham club sites, the Sweden Mesh Discord invite page, Facebook group titles, GitHub, web search and MeshMapper scope names; 1 active MeshCore group(s) found.
 [[groups]]

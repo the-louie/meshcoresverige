@@ -6,11 +6,12 @@ import { readdirSync, readFileSync } from "node:fs";
 
 const DIR = new URL("../data/lan/", import.meta.url);
 const SCB = ["01", "03", "04", "05", "06", "07", "08", "09", "10", "12", "13", "14", "17", "18", "19", "20", "21", "22", "23", "24", "25"];
-const TOP = { scb: "s", slug: "s", short: "s", site: "s", checked: "d", iata: "s", center: "a", zoom: "n", place: "s", meshmapper: "s", text: "s", text_by: "s", community: "link" };
+const TOP = { scb: "s", slug: "s", short: "s", site: "s", checked: "d", iata: "s", center: "a", zoom: "n", place: "s", meshmapper: "s", text: "s", text_by: "s", community: "link", naming: "naming" };
 const TABLES = {
   channels: { name: "s", purpose: "s", note: "s" },
   groups: { name: "s", url: "s" },
   wanted: { name: "s", lat: "n", lon: "n", note: "s" },
+  regions_extra: { scope: "s", note: "s", source: "s", group: "s" },
 };
 
 export function parse(src) {
@@ -40,6 +41,17 @@ export function parse(src) {
       if (!l) throw new Error(`line ${i + 1}: ${k} must be { name = "…", url = "…" }`);
       cur[k] = { name: JSON.parse(l[1]), url: JSON.parse(l[2]) };
     }
+    else if (type === "naming") {
+      // { format = "…", example = "…", source = "…", group = "…" }: only these keys, strings only.
+      const body = v.match(/^\{(.*)\}$/);
+      if (!body) throw new Error(`line ${i + 1}: ${k} must be { format = "…", … }`);
+      cur[k] = {};
+      for (const part of body[1].matchAll(/\s*(\w+)\s*=\s*("(?:[^"\\]|\\.)*")\s*(,|$)/g)) {
+        if (!["format", "example", "source", "group"].includes(part[1])) throw new Error(`line ${i + 1}: unknown key "${part[1]}" in ${k}`);
+        cur[k][part[1]] = JSON.parse(part[2]);
+      }
+      if (!cur[k].format) throw new Error(`line ${i + 1}: ${k} needs a format`);
+    }
     else if (type === "a") { if (!/^\[\s*(-?\d+(\.\d+)?\s*(,\s*-?\d+(\.\d+)?\s*)*)?\]$/.test(v)) throw new Error(`line ${i + 1}: ${k} must be [numbers]`); cur[k] = JSON.parse(v); }
   });
   return out;
@@ -57,6 +69,8 @@ export function checkCounty(file, c) {
   if (c.community && !/^https:\/\/[^\s"]+$/.test(c.community.url)) errs.push(`${file}: community.url must be an https address`);
   if (c.meshmapper && !/^https:\/\//.test(c.meshmapper)) errs.push(`${file}: meshmapper must be an https address`);
   if (c.text_by && !c.text) errs.push(`${file}: text_by without text`);
+  if (c.naming?.source && !/^https:\/\//.test(c.naming.source)) errs.push(`${file}: naming.source must be an https address`);
+  for (const r of c.regions_extra || []) if (!/^se[0-9a-z-]+$/.test(r.scope || "") || (r.source && !/^https:\/\//.test(r.source))) errs.push(`${file}: a regions_extra entry needs a scope like se0880 and an https source`);
   if (c.center && c.center.length !== 2) errs.push(`${file}: center is [lat, lon]`);
   for (const g of c.groups || []) if (!g.name || !/^https:\/\//.test(g.url || "")) errs.push(`${file}: a group needs a name and an https url`);
   for (const ch of c.channels || []) if (!/^#[a-z0-9-]+$/.test(ch.name || "")) errs.push(`${file}: channel "${ch.name}" must be #lower-case`);

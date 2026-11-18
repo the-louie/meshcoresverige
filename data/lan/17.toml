@@ -5,7 +5,14 @@ scb     = "17"
 slug    = "värmland"
 short   = "Värmland"
 site    = ""
-checked = 2026-11-16
+checked = 2026-11-18
+# Värmland Mesh's own naming, read on https://varmlandmesh.se/ 2026-11-18 (operator decision 2026-11-18: the local format first).
+naming  = { format = "SE[kommunkod]-[Plats]", example = "SE1780-KarlstadREP", source = "https://varmlandmesh.se/", group = "Värmland Mesh" }
+
+# Published by Värmland Mesh on https://varmlandmesh.se/, checked 2026-11-18.
+[[channels]]
+  name    = "#varmland"
+  purpose = "Prat om nätet i Värmland"
 
 # Groups: surveyed 2026-11-18 from meshat.se Regionala sidor, the groups' own sites, ham club sites, the Sweden Mesh Discord invite page, Facebook group titles, GitHub, web search and MeshMapper scope names; 2 active MeshCore group(s) found.
 [[groups]]

@@ -5,8 +5,16 @@ scb     = "08"
 slug    = "kalmar"
 short   = "Kalmar"
 site    = ""
-checked = 2026-11-17
+checked = 2026-11-18
 community = { name = "Kalmar-Mesh", url = "https://kalmar-mesh.se/" }   # the county's community site, a button beside "Se kartan" (B-306)
+# Kalmar-Mesh's own naming and region, read on https://kalmar-mesh.se/ 2026-11-18 (operator decision 2026-11-18: the local format first).
+naming  = { format = "SE-{kommunförkortning}-{beskrivning}", example = "SE-KAM-Fjolebro", source = "https://kalmar-mesh.se/", group = "Kalmar-Mesh" }
+
+[[regions_extra]]
+  scope  = "se0880"
+  note   = "Kalmar kommun"
+  source = "https://kalmar-mesh.se/"
+  group  = "Kalmar-Mesh"
 
 # Published by Kalmar-Mesh on https://kalmar-mesh.se/#information ("Lokala kanaler"), checked
 # 2026-11-17; the group recommends the region se08 for them.

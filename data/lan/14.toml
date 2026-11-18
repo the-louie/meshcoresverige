@@ -5,8 +5,10 @@ scb     = "14"
 slug    = "västra-götaland"
 short   = "Västra Götaland"
 site    = ""
-checked = 2026-11-16
+checked = 2026-11-18
 community = { name = "GBG Mesh", url = "https://gbg-mesh.se/" }   # the county's community site, a button beside "Se kartan" (B-306)
+# GBG Mesh's own naming, read on https://gbg-mesh.se/ 2026-11-18 (operator decision 2026-11-18: the local format first).
+naming  = { format = "SE-GOT-<Beskrivning>", source = "https://gbg-mesh.se/", group = "GBG Mesh" }
 
 # Groups: surveyed 2026-11-18 from meshat.se Regionala sidor, the groups' own sites, ham club sites, the Sweden Mesh Discord invite page, Facebook group titles, GitHub, web search and MeshMapper scope names; 1 active MeshCore group(s) found.
 [[groups]]
