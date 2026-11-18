@@ -70,3 +70,5 @@ github.com/sweden-mesh/meshcore-regional-template v0.59.0 h1:AgkeQS6JmdMWN4kptGQ
 github.com/sweden-mesh/meshcore-regional-template v0.59.0/go.mod h1:XxselOgHbwYDjib4oVPNeQpPh8zaxOTmQ38VG+ITNy0=
 github.com/sweden-mesh/meshcore-regional-template v0.60.0 h1:3qsobPqU1U1ySFKAn9NIceUKMyzflTj7QPN42nfiqj4=
 github.com/sweden-mesh/meshcore-regional-template v0.60.0/go.mod h1:XxselOgHbwYDjib4oVPNeQpPh8zaxOTmQ38VG+ITNy0=
+github.com/sweden-mesh/meshcore-regional-template v0.61.0 h1:3GDy6iYE5DLhSHS3TVNTityEGGetl8ViMI1MIDLME38=
+github.com/sweden-mesh/meshcore-regional-template v0.61.0/go.mod h1:XxselOgHbwYDjib4oVPNeQpPh8zaxOTmQ38VG+ITNy0=
