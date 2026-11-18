@@ -7,7 +7,6 @@ date: 2026-11-18
 lastmodData: new_repeaters   # the sitemap date follows the list, rebuilt every 6 h (B-362)
 ---
 
-Repeatrarna här har hörts av nätets observatörer för första gången den senaste veckan. Saknas din?
-Se [Varför syns inte min repeater på kartan?](/fragor/repeater-inte-pa-kartan/)
+Saknas din repeater? Se [Varför syns inte min repeater på kartan?](/fragor/repeater-inte-pa-kartan/)
 
 {{< new-repeaters >}}
