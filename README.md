@@ -11,6 +11,13 @@ the county files under `data/lan/`, `content/om.md`, the Pages Functions and the
 
 Live data: the public API of https://beacon.meshcore-jkp.se, until the site's own Beacon name exists.
 
+## English
+
+The site is also in English under `/en/` (B-337): the `[languages]` block in `hugo.toml`, the template's
+`content.en/`, and this site's own English pages in `content.en/` (same file names as `content/`; each sets
+`url: /en/…/`). Swedish addresses are unchanged. Not yet in English: the counties' own texts in `data/lan/`
+and the solar method page. How it works: the template's README, "Languages".
+
 ## County data
 
 One file per county, `data/lan/<scb>.toml` (SCB county code). Anyone may correct one with a pull
@@ -18,7 +25,7 @@ request; see `CONTRIBUTING.md`.
 
 ## Build
 
-Hugo ≥ 0.146 and Go:
+Hugo ≥ 0.153 and Go:
 
 ```sh
 hugo --gc --minify              # the site in public/, with the template tag in go.mod

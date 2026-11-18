@@ -96,3 +96,51 @@ enableRobotsTXT = true
   name = "Om sidan"
   pageRef = "/om"
   weight = 20
+
+# B-337: the site in English under /en/: the template's content.en/ and this site's content.en/.
+# Swedish stays at / with every address unchanged. A further language: one more block like [languages.en]
+# and a content.<code>/ folder (here and in the template).
+[languages.sv]
+  weight = 1
+  locale = "sv"
+  label = "Svenska"
+[languages.en]
+  weight = 2
+  locale = "en"
+  label = "English"
+  title = "MeshCore Sweden"
+  contentDir = "content.en"
+  [languages.en.params.region]
+    name = "Sweden"
+    short = "Sweden"
+  [[languages.en.params.links]]
+    name = "meshat.se"
+    url = "https://meshat.se/"
+  [[languages.en.params.links]]
+    name = "Forum"
+    footer = "The meshat.se forum (MeshCore, Swedish)"
+    url = "https://forum.meshat.se/c/meshcore/6"
+  [[languages.en.menus.main]]
+    name = "Get started"
+    pageRef = "/kom-igang"
+    weight = 5
+  [[languages.en.menus.main]]
+    name = "Guides"
+    pageRef = "/guider"
+    weight = 10
+  [[languages.en.menus.main]]
+    name = "Step by step"
+    pageRef = "/wizard"
+    weight = 15
+  [[languages.en.menus.main]]
+    name = "Troubleshooting"
+    pageRef = "/felsokning"
+    weight = 17
+  [[languages.en.menus.main]]
+    name = "FAQ"
+    pageRef = "/fragor"
+    weight = 18
+  [[languages.en.menus.main]]
+    name = "About"
+    pageRef = "/om"
+    weight = 20
