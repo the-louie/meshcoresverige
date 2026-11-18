@@ -6,3 +6,8 @@ slug    = "dalarna"
 short   = "Dalarna"
 site    = ""
 checked = 2026-11-16
+
+# Groups: surveyed 2026-11-18 from meshat.se Regionala sidor, the groups' own sites, ham club sites, the Sweden Mesh Discord invite page, Facebook group titles, GitHub, web search and MeshMapper scope names; 1 active MeshCore group(s) found.
+[[groups]]
+  name = "SK4AO Falu Radioklubb"
+  url  = "https://sk4ao.net/index.php/sv/meshcore-i-falun"

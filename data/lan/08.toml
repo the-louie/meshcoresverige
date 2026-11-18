@@ -22,6 +22,7 @@ community = { name = "Kalmar-Mesh", url = "https://kalmar-mesh.se/" }   # the co
   name    = "#kalmar-alerts"
   purpose = "Larm från sensorer i Kalmar, när ett larmvärde passeras"
 
+# Groups: surveyed 2026-11-18 from meshat.se Regionala sidor, the groups' own sites, ham club sites, the Sweden Mesh Discord invite page, Facebook group titles, GitHub, web search and MeshMapper scope names; 2 active MeshCore group(s) found.
 [[groups]]
   name = "Kalmar-Mesh"
   url  = "https://kalmar-mesh.se/"

@@ -6,3 +6,12 @@ slug    = "värmland"
 short   = "Värmland"
 site    = ""
 checked = 2026-11-16
+
+# Groups: surveyed 2026-11-18 from meshat.se Regionala sidor, the groups' own sites, ham club sites, the Sweden Mesh Discord invite page, Facebook group titles, GitHub, web search and MeshMapper scope names; 2 active MeshCore group(s) found.
+[[groups]]
+  name = "Värmland Mesh"
+  url  = "https://varmlandmesh.se/"
+
+[[groups]]
+  name = "SK4AV Karlstads Sändaramatörer"
+  url  = "https://www.sk4av.se/"
