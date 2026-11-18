@@ -41,3 +41,7 @@ Sidan och mallen den bygger på har skrivits av de här personerna. Listan hämt
 sidan byggs.
 
 {{< contributors >}}
+
+## I media
+
+Reportage om MeshCore i Sverige finns samlade under [MeshCore i media](/press/).
