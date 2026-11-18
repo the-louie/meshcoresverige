@@ -35,6 +35,27 @@ npm test                        # county files and functions
 
 ## Deploy
 
-`.github/workflows/deploy.yml` builds on every push and pull request. The Cloudflare Pages
-deploy is off until the domain and the Pages project exist (repository variable
-`DEPLOY_ENABLED=true`).
+`.github/workflows/deploy.yml` builds on every push and pull request, and every 6 h from `main`
+(cron), so the Beacon numbers on the county pages and /nya-repeatrar/ follow the network without a
+commit. The Cloudflare Pages deploy runs when the repository variable `DEPLOY_ENABLED` is `true`.
+
+Before Hugo, `scripts/new-repeaters.mjs` writes `data/new_repeaters.json` (the repeaters first heard
+in the last 7 days) and `static/data/first-seen.json` (every first-heard date found so far, which the
+next run reads back from the live site, so only new keys are looked up). Both are build output, never
+committed. A key the seed's list shows was heard before the window is settled without a call; the rest
+are asked of our Beacon once each, and of the seed (another operator's server) at most 40 calls a run.
+
+After a production deploy, `scripts/indexnow.mjs` sends the URLs that are new or whose `<lastmod>`
+changed (the live sitemap before the deploy against the new one) to IndexNow; the key is
+`static/<key>.txt`.
+
+### Release step: the sitemap to Google, at most once a day
+
+After a release is verified live, from the workspace (the Search Console service account stays there):
+
+```sh
+python3 planning/meshcore-jkp.se/tools/gsc.py submit-daily sc-domain:meshcoresverige.se https://meshcoresverige.se/sitemap.xml
+```
+
+`submit-daily` reads `lastSubmitted` and skips the submit when it is under 24 h old, so several
+releases in a day submit once.

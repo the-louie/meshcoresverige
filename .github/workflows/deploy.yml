@@ -39,6 +39,15 @@ jobs:
           tar -xzf pagefind.tar.gz pagefind && sudo install pagefind /usr/local/bin/pagefind
       - name: Check the county files and the functions
         run: npm test
+      # The repeaters first heard in the last 7 days (B-362): data/new_repeaters.json for the build, and the
+      # first-heard dates so far to static/data/first-seen.json, which the next run reads back from the live
+      # site. Throttled against Beacon's rate limit; a failure leaves the page saying the list is missing.
+      - name: New repeaters
+        run: node scripts/new-repeaters.mjs
+      # What the live sitemap says before this deploy, for IndexNow after it (SEO-SV-29).
+      - name: Live sitemap before the deploy
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: curl -sfL --max-time 30 https://meshcoresverige.se/sitemap.xml -o "$RUNNER_TEMP/old-sitemap.xml" || true
       - name: Build (staging)
         if: github.ref != 'refs/heads/main'
         env:
@@ -56,3 +65,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy public --project-name=meshcoresverige --branch=${{ github.ref_name }} --commit-dirty=true
+      # The new and changed URLs to IndexNow (Bing and others; not Google), once the deploy is live.
+      - name: IndexNow
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && vars.DEPLOY_ENABLED == 'true'
+        run: node scripts/indexnow.mjs "$RUNNER_TEMP/old-sitemap.xml" public/sitemap.xml
