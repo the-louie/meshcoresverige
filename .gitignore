@@ -3,3 +3,6 @@ resources/_gen/
 .hugo_build.lock
 assets/jsconfig.json
 node_modules/
+# Written by scripts/new-repeaters.mjs at build time (B-362), never committed.
+data/new_repeaters.json
+static/data/first-seen.json
