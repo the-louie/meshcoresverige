@@ -186,6 +186,8 @@ async function main() {
       const row = { publicKey: n.publicKey, name: n.name || "", lat: placed(n) ? n.lat : null, lng: placed(n) ? n.lng : null,
         firstSeen: n.firstSeen, lastSeen: n.lastSeen, isObserver: !!n.isObserver, possiblyForeign: !!n.possiblyForeign,
         iatas: (n.iatas || []).map((i) => i.iata), firmware: "", firmwareMin: version(n.minFirmwareVersion), hardware: "" };
+      // The list has no firmware estimate; the node's detail does (a handful of calls: new nodes only).
+      try { row.firmwareMin = version((await ours(`/nodes/${n.id}`))?.minFirmwareVersion); } catch { /* left out */ }
       const o = n.isObserver && obsByName.get(norm(n.name));
       if (o) {
         try {
