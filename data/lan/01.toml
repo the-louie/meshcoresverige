@@ -4,7 +4,7 @@
 scb     = "01"
 slug    = "stockholm"
 short   = "Stockholm"
-site    = "https://meshcore-sth.se/"
+site    = ""
 checked = 2026-11-16
 community = { name = "STHLM-MESH", url = "https://sthlm-mesh.se/" }   # the county's community site, a button beside "Se kartan" (B-306)
 
