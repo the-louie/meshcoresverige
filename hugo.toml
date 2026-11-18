@@ -17,6 +17,12 @@ enableRobotsTXT = true
   lanData = "https://github.com/the-louie/meshcoresverige/blob/main/CONTRIBUTING.md"
   # The site's own repository only (SEO-SV-15, SEO-T3): never a community or chat link.
   sameAs = ["https://github.com/the-louie/meshcoresverige"]
+  # County names as people write them (the Sweden Mesh Discord's channels): 301 to the county page (B-360).
+  redirects = [
+    ["/jonkopings-lan/", "/jönköping/"], ["/jönköpings-län/", "/jönköping/"],
+    ["/kalmar-lan/", "/kalmar/"], ["/kalmar-län/", "/kalmar/"],
+    ["/orebro-lan/", "/örebro/"], ["/örebro-län/", "/örebro/"],
+  ]
   editURL = "https://github.com/the-louie/meshcoresverige/edit/main/"   # "Rätta sidan" on the site's own pages (UX-SV-6)
 
 # No county is fixed here: the visitor's choice decides. Scope "se" until one is chosen. The Sverige map
