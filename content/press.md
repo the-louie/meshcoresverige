@@ -31,11 +31,6 @@ press:
     date: "2026-09-05"
     publisher: "Ölands Radioamatörer (SK7RN)"
   - type: NewsArticle
-    name: "Beredskap handlar om att vara redo."
-    url: "https://www.ssa.se/beredskap-handlar-om-att-vara-redo/"
-    date: "2026-10-02"
-    publisher: "Sveriges Sändareamatörer (SSA)"
-  - type: NewsArticle
     name: "Thomas kommunicerar genom hemmabygge – om allt slås ut"
     url: "https://www.sverigesradio.se/artikel/thomas-bygger-natverk-for-kriskommunikation"
     date: "2026-09-27"
@@ -88,13 +83,8 @@ gäller.
 
 | Datum | Medium | Rubrik |
 | --- | --- | --- |
-| 2 oktober 2026 | Sveriges Sändareamatörer (SSA) | [Beredskap handlar om att vara redo.](https://www.ssa.se/beredskap-handlar-om-att-vara-redo/) |
 | 27 september 2026 | Sveriges Radio, P4 Kristianstad | [Thomas kommunicerar genom hemmabygge – om allt slås ut](https://www.sverigesradio.se/artikel/thomas-bygger-natverk-for-kriskommunikation) |
 | 7 april 2024 | Sveriges Sändareamatörer (SSA), distrikt 0 | [SK0QO har temakväll 2024-04-10 om Meshtastic](https://www.ssa.se/distrikt0/sk0qo-har-temakvall-2024-04-10-om-meshtastic/) |
-
-SSA:s beredskapsnotis
-: Lindesbergs Radioklubb och FRO körde reservsamband mellan vallokaler på valdagen 2026, delvis över
-  ett gemensamt meshnät; vilket system nämns inte.
 
 Sveriges Radios artikel
 : Om en person i Skåne som bygger ett meshnät med små hemmabyggda sändare, för kommunikation vid en
