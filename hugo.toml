@@ -65,6 +65,10 @@ enableRobotsTXT = true
   repos = ["sweden-mesh/meshcore-regional-template", "the-louie/meshcoresverige"]
 
 [[menus.main]]
+  name = "Kom igång"
+  pageRef = "/kom-igang"
+  weight = 5
+[[menus.main]]
   name = "Guider"
   pageRef = "/guider"
   weight = 10
