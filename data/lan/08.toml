@@ -8,11 +8,12 @@ site    = ""
 checked = 2026-11-18
 community = { name = "Kalmar-Mesh", url = "https://kalmar-mesh.se/" }   # the county's community site, a button beside "Se kartan" (B-306)
 # Kalmar-Mesh's own naming and region, read on https://kalmar-mesh.se/ 2026-11-18 (operator decision 2026-11-18: the local format first).
-naming  = { format = "SE-{kommunförkortning}-{beskrivning}", example = "SE-KAM-Fjolebro", source = "https://kalmar-mesh.se/", group = "Kalmar-Mesh" }
+naming  = { format = "SE-{kommunförkortning}-{beskrivning}", example = "SE-KAM-Fjolebro", format_en = "SE-{municipality abbreviation}-{description}", source = "https://kalmar-mesh.se/", group = "Kalmar-Mesh" }
 
 [[regions_extra]]
   scope  = "se0880"
   note   = "Kalmar kommun"
+  note_en = "Kalmar Municipality"
   source = "https://kalmar-mesh.se/"
   group  = "Kalmar-Mesh"
 
@@ -21,14 +22,17 @@ naming  = { format = "SE-{kommunförkortning}-{beskrivning}", example = "SE-KAM-
 [[channels]]
   name    = "#kalmar"
   purpose = "Länets chattkanal: frågor, diskussion och lokal samordning"
+  purpose_en = "The county's chat channel: questions, discussion and local coordination"
 
 [[channels]]
   name    = "#kalmar-sensors"
   purpose = "Mätvärden och telemetri från sensorer i Kalmar"
+  purpose_en = "Readings and telemetry from sensors in Kalmar"
 
 [[channels]]
   name    = "#kalmar-alerts"
   purpose = "Larm från sensorer i Kalmar, när ett larmvärde passeras"
+  purpose_en = "Alerts from sensors in Kalmar, when an alert threshold is crossed"
 
 # Groups: surveyed 2026-11-18 from meshat.se Regionala sidor, the groups' own sites, ham club sites, the Sweden Mesh Discord invite page, Facebook group titles, GitHub, web search and MeshMapper scope names; 2 active MeshCore group(s) found.
 [[groups]]

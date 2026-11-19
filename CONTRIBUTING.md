@@ -56,6 +56,27 @@ Listor, en per post:
   note = "varför platsen behövs"
 ```
 
+## Engelska
+
+Sidan finns också på engelska under `/en/`. En text du skriver på svenska kan få en engelsk
+version bredvid sig, med samma nyckel och `_en` på slutet: `text_en`, `purpose_en` och `note_en`
+under `[[channels]]`, `note_en` under `[[wanted]]` och `[[regions_extra]]`, och `format_en` i
+`naming`. Utan den visas den svenska texten även på engelska.
+
+```toml
+[[channels]]
+  name       = "#kalmar"
+  purpose    = "Länets chattkanal"
+  purpose_en = "The county's chat channel"
+```
+
+Sidorna i `content/` översätts i `content.en/`, på samma sökväg. En översättning räknas som
+inaktuell när den svenska sidans `lastmod` är senare än den engelska: den som uppdaterar den
+engelska texten sätter dess `lastmod` till samma dag. Mallens skript
+([meshcore-regional-template](https://github.com/sweden-mesh/meshcore-regional-template)) listar
+inaktuella och saknade översättningar: `node ../meshcore-regional-template/scripts/translation-status.mjs .`
+från den här katalogen, med mallen utcheckad bredvid.
+
 ## Kontroll
 
 `npm test` kontrollerar filerna: okända nycklar, fel SCB-kod, en adress som redan används och
