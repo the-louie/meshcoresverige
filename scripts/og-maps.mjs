@@ -1,6 +1,6 @@
 // The map pictures for link previews of the map's share addresses (/karta/, /<county>/karta/;
 // the template's layouts/mapshare): the real map of each region as the built site draws it, in the
-// dark theme, with the logo and "MeshCore Sverige" on top. Written to <out>/karta-<scb|se>.jpg.
+// dark theme, with the logo and "MeshCore Sverige" on top. Written to <out>/karta-<scb|se|se-wide>.jpg.
 //   node scripts/og-maps.mjs [site dir = public] [out dir = static/og]
 // Sverige is square, from just south of Skåne to just north of Säter (operator 2026-11-22); a county
 // is 1200 x 630, framed on its border. Needs the built site, a Chrome (CHROME, else the system's) and
@@ -39,7 +39,9 @@ try { puppeteer = require(name); } catch { puppeteer = require(path.join(execSyn
 puppeteer = puppeteer.default || puppeteer;
 
 const pages = JSON.parse(await readFile(path.join(site, "lan/pages.json"), "utf8"));
-const jobs = [{ key: "se", url: "/", width: 1200, height: 1200 },
+// Sverige twice: square for a service that shows a picture whole, and wide (the same span south to north,
+// more sea and neighbours at the sides) for the many that crop to about 1.9:1 (functions/karta/index.js).
+const jobs = [{ key: "se", url: "/", width: 1200, height: 1200 }, { key: "se-wide", url: "/", width: 1200, height: 630 },
   ...Object.entries(pages).map(([scb, url]) => ({ key: scb, url, width: 1200, height: 630 }))];
 await mkdir(out, { recursive: true });
 
@@ -65,8 +67,9 @@ async function shoot(job) {
       const img = new Image(); img.src = document.querySelector(".brand-logo").src; await img.decode();
       brand.append(img, document.createTextNode("MeshCore Sverige"));
       el.append(brand);
-      const box = job.key === "se" ? sweden : el.regionBox();
-      if (box) map.fitBounds(box, { padding: job.key === "se" ? 0 : { top: 130, bottom: 50, left: 60, right: 60 }, animate: false });
+      const box = job.key.startsWith("se") ? sweden : el.regionBox();
+      const padding = job.key === "se" ? 0 : job.key === "se-wide" ? { top: 100, bottom: 0, left: 0, right: 0 } : { top: 130, bottom: 50, left: 60, right: 60 };
+      if (box) map.fitBounds(box, { padding, animate: false });
       await document.fonts.ready;
       await new Promise((r) => { map.once("idle", r); map.triggerRepaint(); });
     }, job, SWEDEN);
@@ -81,7 +84,7 @@ try {
   // Three at a time: the pages share one Beacon and one tile server.
   const queue = process.env.ONLY ? jobs.filter((j) => process.env.ONLY.split(",").includes(j.key)) : [...jobs];
   // Sverige first and alone: it loads every region's nodes and links.
-  if (queue[0]?.key === "se") await shoot(queue.shift());
+  while (queue[0]?.key.startsWith("se")) await shoot(queue.shift());
   await Promise.all([0, 1, 2].map(async () => { while (queue.length) await shoot(queue.shift()); }));
 } finally { await browser.close(); server.close(); }
 process.exit(failed ? 1 : 0);

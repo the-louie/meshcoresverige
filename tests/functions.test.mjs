@@ -53,3 +53,16 @@ test("the Plausible proxy stays shut until the site's script path is set", async
   const r = await onRequest({ request: new Request("https://meshcoresverige.se/p/s.js"), params: { path: ["s.js"] }, env: {} });
   assert.equal(r.status, 404);
 });
+
+test("the Sverige map's share address hands Discord the square picture, others the wide one", async () => {
+  const { onRequestGet: share, showsWhole, squarePicture } = await import("../functions/karta/index.js");
+  assert.equal(showsWhole("Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)"), true);
+  assert.equal(showsWhole("facebookexternalhit/1.1"), false);
+  const html = '<meta property="og:image" content="https://x/og/karta-se-wide.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">';
+  assert.equal(squarePicture(html), '<meta property="og:image" content="https://x/og/karta-se.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="1200">');
+  assert.match(squarePicture('<meta property="og:image:height" content=630>'), /content=1200>/);
+  const next = async () => new Response(html, { headers: { "Content-Type": "text/html; charset=utf-8" } });
+  const ask = async (ua) => (await share({ request: new Request("https://x/karta/", { headers: { "User-Agent": ua } }), next })).text();
+  assert.match(await ask("Discordbot/2.0"), /karta-se\.jpg/);
+  assert.match(await ask("WhatsApp/2.23"), /karta-se-wide\.jpg/);
+});
