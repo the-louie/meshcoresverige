@@ -1,5 +1,5 @@
 # Cloudflare Pages response headers, as on meshcore-jkp.se. Scripts only from this site plus the four
-# inline scripts listed by hash (theme, motion, the county choice, Plausible init; template v0.42.0 built
+# inline scripts listed by hash (theme, motion (template v0.77.0), the county choice, Plausible init; built
 # with `hugo --minify`), enforced 2026-11-16 after a headless check of all 146 pages, the search, the
 # maps and the wizards' pickers: 0 violations. Any change to an inline script in the template (see its
 # CHANGELOG) needs new hashes here, or that script stops running.
@@ -8,7 +8,7 @@
 # it changes when a county gains or loses its own site.
 # HSTS raised step by step: 300, 86400 (2026-11-16), then 31536000.
 /*
-  Content-Security-Policy: object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'sha256-JY+HQEUVCvAfSDIkt62Af7zLBs3AvpUTZSQsgf1sC5o=' 'sha256-baA9qojJ3UDpPMd2+kFcIgQNuTH5DT4LpY+8TMIdh40=' 'sha256-NUYcyFdW6ezezIqIEsy+eubHcgF/bj6vf0GUYLsRLp8=' 'sha256-DSwjoUOof6idJqQ1AocwIA+7jBFvYEVS0Hy/1ZK+Lf4=' 'wasm-unsafe-eval' 'report-sample'; worker-src 'self' blob:
+  Content-Security-Policy: object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'sha256-JY+HQEUVCvAfSDIkt62Af7zLBs3AvpUTZSQsgf1sC5o=' 'sha256-Bz4tbSC0Qx7TecDe5l3kPocZ9d7B5MTLWvJ9tsRydeM=' 'sha256-NUYcyFdW6ezezIqIEsy+eubHcgF/bj6vf0GUYLsRLp8=' 'sha256-DSwjoUOof6idJqQ1AocwIA+7jBFvYEVS0Hy/1ZK+Lf4=' 'wasm-unsafe-eval' 'report-sample'; worker-src 'self' blob:
   X-Frame-Options: DENY
   Permissions-Policy: camera=(), microphone=(), geolocation=(), usb=(), bluetooth=(), payment=(), serial=(self)
   Strict-Transport-Security: max-age=86400
