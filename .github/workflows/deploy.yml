@@ -56,6 +56,14 @@ jobs:
       - name: Build (production)
         if: github.ref == 'refs/heads/main'
         run: hugo --gc --minify
+      # The map pictures for the share addresses' link previews (/karta/, /<county>/karta/), taken from the
+      # built site with live Beacon data. A failure keeps the pictures committed in static/og.
+      - name: Map pictures
+        continue-on-error: true
+        timeout-minutes: 10
+        run: |
+          npm install --no-save puppeteer-core
+          PUPPETEER=puppeteer-core CHROME="$(command -v google-chrome)" node scripts/og-maps.mjs public public/og
       - name: Search index
         run: pagefind --site public
       - name: Deploy to Cloudflare Pages
