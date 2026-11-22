@@ -71,8 +71,8 @@ async function shoot(job) {
       await new Promise((r) => { map.once("idle", r); map.triggerRepaint(); });
     }, job, SWEDEN);
     await new Promise((r) => setTimeout(r, 1500)); // the links are drawn a moment after the nodes
-    // Full strength: the Sverige overview is drawn soft on the site, which is too faint for a small picture.
-    await page.evaluate(() => new Promise((r) => { const el = document.getElementById("map"), m = el.mapgl; el.strong?.(); m.once("idle", r); m.triggerRepaint(); }));
+    // The Sverige overview stays soft, with the muted repeater dots the site's own map has (operator 2026-11-22).
+    await page.evaluate(() => new Promise((r) => { const m = document.getElementById("map").mapgl; m.once("idle", r); m.triggerRepaint(); }));
     await page.screenshot({ path: path.join(out, `karta-${job.key}.jpg`), type: "jpeg", quality: 86 });
     console.log(`ok   karta-${job.key}.jpg`);
   } catch (e) { failed++; console.log(`FAIL karta-${job.key}: ${e.message}`); } finally { await page.close(); }
