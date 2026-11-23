@@ -56,14 +56,22 @@ jobs:
       - name: Build (production)
         if: github.ref == 'refs/heads/main'
         run: hugo --gc --minify
-      # The map pictures for the share addresses' link previews (/karta/, /<county>/karta/), taken from the
-      # built site with live Beacon data. A failure keeps the pictures committed in static/og.
-      - name: Map pictures
+      # The link-preview pictures, taken from the built site with live Beacon data: the map pictures for the
+      # share addresses (/karta/, /<county>/karta/) and one picture per page (title, a line, the county's
+      # numbers). They are written to static/og, and the site is built once more so every page points at its
+      # own picture (the template uses static/og/s/<key>.jpg where it exists). The schedule above rebuilds
+      # the site every six hours, which keeps the numbers in the pictures current. A failure keeps the map
+      # pictures committed in static/og and the site's standard picture on the pages.
+      - name: Preview pictures
         continue-on-error: true
-        timeout-minutes: 10
+        timeout-minutes: 12
         run: |
           npm install --no-save puppeteer-core
-          PUPPETEER=puppeteer-core CHROME="$(command -v google-chrome)" node scripts/og-maps.mjs public public/og
+          export PUPPETEER=puppeteer-core CHROME="$(command -v google-chrome)"
+          node scripts/og-maps.mjs public static/og || echo "some map pictures were not retaken"
+          node scripts/og-pages.mjs public static/og/s static/og
+          if [ "$GITHUB_REF" = "refs/heads/main" ]; then hugo --gc --minify
+          else HUGO_PARAMS_NOINDEX=true hugo --gc --minify --baseURL https://staging.meshcoresverige.se/; fi
       - name: Search index
         run: pagefind --site public
       - name: Deploy to Cloudflare Pages

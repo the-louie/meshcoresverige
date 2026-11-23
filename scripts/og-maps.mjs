@@ -1,6 +1,7 @@
 // The map pictures for link previews of the map's share addresses (/karta/, /<county>/karta/;
 // the template's layouts/mapshare): the real map of each region as the built site draws it, in the
-// dark theme, with the logo and "MeshCore Sverige" on top. Written to <out>/karta-<scb|se|se-wide>.jpg.
+// dark theme, with the logo and "MeshCore Sverige" on top. Written to <out>/karta-<scb|se|se-wide>.jpg,
+// and without the name as <out>/bg-<scb|se-wide>.jpg for the pages' own pictures.
 //   node scripts/og-maps.mjs [site dir = public] [out dir = static/og]
 // Sverige is square, from just south of Skåne to just north of Säter (operator 2026-11-22); a county
 // is 1200 x 630, framed on its border. Needs the built site, a Chrome (CHROME, else the system's) and
@@ -97,7 +98,8 @@ function stage(key, share) {
 const browser = await puppeteer.launch({ executablePath: process.env.CHROME || "/usr/bin/google-chrome",
   args: ["--disable-dev-shm-usage", "--enable-unsafe-swiftshader", ...(process.env.CI ? ["--no-sandbox"] : [])] });
 let failed = 0;
-async function shoot(job) {
+const retry = [];
+async function shoot(job, again = false) {
   const page = await browser.newPage();
   try {
     await page.setViewport({ width: job.width, height: job.height });
@@ -105,7 +107,7 @@ async function shoot(job) {
     if (process.env.DEBUG) { page.on("pageerror", (e) => console.log("pageerror", e.message)); page.on("requestfailed", (r) => console.log("failed", r.url().slice(0, 90))); page.on("response", (r) => { if (r.status() >= 400) console.log(r.status(), r.url().slice(0, 90)); }); page.on("console", (m) => console.log("console", m.text().slice(0, 200))); }
     await page.goto(`${base}${job.url}?live=0&full=1`, { waitUntil: "domcontentloaded" });
     await page.evaluate(() => document.getElementById("map").scrollIntoView());
-    await page.waitForFunction(() => { const el = document.getElementById("map"); return el.mapgl?.getSource("nodes") && el.mapgl.getLayer("node-points"); }, { timeout: Number(process.env.WAIT || 60000) });
+    await page.waitForFunction(() => { const el = document.getElementById("map"); return el.mapgl?.getSource("nodes") && el.mapgl.getLayer("node-points"); }, { timeout: Number(process.env.WAIT || 60000) * (again ? 2 : 1) });
     await page.addStyleTag({ content: `.maplibregl-ctrl-top-right, .maplibregl-ctrl-top-left, .map-panel, .map-loading, .lan-tip, .site-header { display: none !important; }
       .og-brand { position: absolute; left: 0; top: 0; right: 0; z-index: 5; display: flex; align-items: center; gap: 18px; padding: 36px 44px 90px;
         background: linear-gradient(#0b141bf2, #0b141bb0 55%, #0b141b00); color: #fff; font: 700 46px/1 "IBM Plex Sans", system-ui, sans-serif; letter-spacing: -.01em; }
@@ -126,9 +128,16 @@ async function shoot(job) {
     // The Sverige overview stays soft, with the muted repeater dots the site's own map has (operator 2026-11-22).
     const storm = await page.evaluate(stage, job.key, SHARE);
     await page.evaluate(() => new Promise((r) => { const m = document.getElementById("map").mapgl; m.once("idle", r); m.triggerRepaint(); }));
+    // The same map without the name and the map credit, as the background of the pages' own pictures
+    // (scripts/og-pages.mjs, which writes both itself): bg-<key>.jpg. Not for the square one.
+    if (job.key !== "se") {
+      const hide = await page.addStyleTag({ content: ".og-brand, .maplibregl-ctrl-bottom-right { visibility: hidden !important; }" });
+      await page.screenshot({ path: path.join(out, `bg-${job.key}.jpg`), type: "jpeg", quality: 82 });
+      await hide.evaluate((e) => e.remove());
+    }
     await page.screenshot({ path: path.join(out, `karta-${job.key}.jpg`), type: "jpeg", quality: 86 });
     console.log(`ok   karta-${job.key}.jpg  ${storm}`);
-  } catch (e) { failed++; console.log(`FAIL karta-${job.key}: ${e.message}`); } finally { await page.close(); }
+  } catch (e) { if (again) { failed++; console.log(`FAIL karta-${job.key}: ${e.message}`); } else retry.push(job); } finally { await page.close(); }
 }
 try {
   // Three at a time: the pages share one Beacon and one tile server.
@@ -136,5 +145,7 @@ try {
   // Sverige first and alone: it loads every region's nodes and links.
   while (queue[0]?.key.startsWith("se")) await shoot(queue.shift());
   await Promise.all([0, 1, 2].map(async () => { while (queue.length) await shoot(queue.shift()); }));
+  // A picture that did not come (a slow answer while three pages load) is tried once more, alone, with twice the wait.
+  for (const job of retry) await shoot(job, true);
 } finally { await browser.close(); server.close(); }
 process.exit(failed ? 1 : 0);
