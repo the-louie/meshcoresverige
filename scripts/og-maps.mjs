@@ -45,6 +45,55 @@ const jobs = [{ key: "se", url: "/", width: 1200, height: 1200 }, { key: "se-wid
   ...Object.entries(pages).map(([scb, url]) => ({ key: scb, url, width: 1200, height: 630 }))];
 await mkdir(out, { recursive: true });
 
+// A message storm, stopped in mid-flight (operator 2026-11-23: the plain map was "a bit boring"): about
+// SHARE of the repeaters in view that have a link are shown transmitting, with the map's own effects
+// (the template's flow.js: white flash, lit links, travelling bubbles) and one or two orange observer
+// glows. The storm spreads from a few starting repeaters along the real links, as a flood does, each
+// repeater later in its flash than the one it heard. The choice is seeded by the picture's name, so
+// the same mesh gives the same picture at every build. Runs in the page; returns a line for the log.
+const SHARE = Number(process.env.STORM ?? 0.1);
+function stage(key, share) {
+  const el = document.getElementById("map"), map = el.mapgl, flows = el.mapDebug?.flows;
+  const links = map.getSource("links")?._data?.features || map.getSource("links")?.serialize?.().data?.features;
+  if (!flows || !links?.length || !(share > 0)) return "no storm";
+  let seed = [...key].reduce((h, c) => Math.imul(h ^ c.charCodeAt(0), 16777619), 2166136261) >>> 0;
+  const rnd = () => { seed = (seed + 0x6d2b79f5) >>> 0; let t = seed; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  // The repeaters in view and their link ends, from the links the map has drawn.
+  const b = map.getBounds(), at = new Map(), ends = new Map();
+  for (const f of links) {
+    const { a, b: z, colour, role } = f.properties, [pa, pb] = f.geometry.coordinates;
+    if (role === "background") continue;
+    at.set(a, pa); at.set(z, pb);
+    if (!ends.has(a)) ends.set(a, []); if (!ends.has(z)) ends.set(z, []);
+    ends.get(a).push({ id: z, lng: pb[0], lat: pb[1], colour }); ends.get(z).push({ id: a, lng: pa[0], lat: pa[1], colour });
+  }
+  // On a county's picture the storm stays in the county (its own border test, set by lan/map-county.js).
+  const own = (c) => b.contains(c) && !(key.startsWith("se") ? false : el.isOutside?.({ lng: c[0], lat: c[1] }));
+  const inView = [...at.keys()].filter((id) => own(at.get(id))).sort();
+  if (!inView.length) return "no storm";
+  const want = Math.max(1, Math.round(inView.length * share)); // a small county still gets one
+  // A few starting points, then outwards along the links, nearest first.
+  const picked = [], seen = new Set(), queue = [];
+  const start = () => { const free = inView.filter((id) => !seen.has(id)); const id = free[Math.floor(rnd() * free.length)]; seen.add(id); queue.push(id); };
+  for (let i = 0; i < Math.max(1, Math.round(want / 12)); i++) start();
+  while (picked.length < want) {
+    if (!queue.length) start();
+    const id = queue.shift(); picked.push(id);
+    for (const e of ends.get(id).filter((e) => !seen.has(e.id) && own([e.lng, e.lat])).sort(() => rnd() - 0.5).slice(0, 3)) { seen.add(e.id); queue.push(e.id); }
+  }
+  // Stopped clock: the first to send are fading, the last have their bubbles on the way.
+  const now = 1e6; flows.now = () => now; flows.enabled = true; flows.kick = () => {};
+  flows.transmits = picked.map((id, i) => ({ p: { id, lng: at.get(id)[0], lat: at.get(id)[1] }, neighbours: ends.get(id),
+    t0: now - (1150 - 950 * (picked.length > 1 ? i / (picked.length - 1) : 1)) }));
+  flows.glows.clear();
+  const rest = inView.filter((id) => !picked.includes(id));
+  for (let i = 0; i < Math.min(rest.length, want > 20 ? 2 : 1); i++) { const id = rest[Math.floor(rnd() * rest.length)]; flows.glows.set(id, { p: { id, lng: at.get(id)[0], lat: at.get(id)[1] }, t0: now - 150 }); }
+  // The resting links step back as they do under live traffic, so the lit ones stand out.
+  map.setPaintProperty("links", "line-opacity", ["*", 0.35, ["get", "opacity"]]);
+  flows.render();
+  return `storm: ${picked.length} of ${inView.length} repeaters`;
+}
+
 const browser = await puppeteer.launch({ executablePath: process.env.CHROME || "/usr/bin/google-chrome",
   args: ["--disable-dev-shm-usage", "--enable-unsafe-swiftshader", ...(process.env.CI ? ["--no-sandbox"] : [])] });
 let failed = 0;
@@ -75,9 +124,10 @@ async function shoot(job) {
     }, job, SWEDEN);
     await new Promise((r) => setTimeout(r, 1500)); // the links are drawn a moment after the nodes
     // The Sverige overview stays soft, with the muted repeater dots the site's own map has (operator 2026-11-22).
+    const storm = await page.evaluate(stage, job.key, SHARE);
     await page.evaluate(() => new Promise((r) => { const m = document.getElementById("map").mapgl; m.once("idle", r); m.triggerRepaint(); }));
     await page.screenshot({ path: path.join(out, `karta-${job.key}.jpg`), type: "jpeg", quality: 86 });
-    console.log(`ok   karta-${job.key}.jpg`);
+    console.log(`ok   karta-${job.key}.jpg  ${storm}`);
   } catch (e) { failed++; console.log(`FAIL karta-${job.key}: ${e.message}`); } finally { await page.close(); }
 }
 try {
