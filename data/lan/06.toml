@@ -18,3 +18,47 @@ community = { name = "JKPG-Mesh", url = "https://jkpg-mesh.se/" }   # the county
 [[groups]]
   name = "JKPG-Mesh"
   url  = "https://jkpg-mesh.se/"
+
+# Places where the county wants a new repeater (operator 2026-11-15 on the county's earlier site; carried
+# over 2026-11-23, B-382): circles on the map, listed in the node host wizard.
+[[wanted]]
+  name = "Sjogarp"
+  lat = 57.90209
+  lon = 14.10796
+  note = "Vi har ingen bra koppling till Bankeryd nu, Sjogarp skulle kunna bli en länk mellan Jönköping och Bankeryd"
+  note_en = "We have no good link to Bankeryd today. Sjogarp could become a link between Jönköping and Bankeryd."
+
+[[wanted]]
+  name = "Sibbabo"
+  lat = 57.87395
+  lon = 13.93088
+  note = "För att nå till Mullsjö behöver vi minst ett till hopp, Sibbabo är platsen närmast Mullsjö där man fortfarande har möjlighet att få in Jönköping."
+  note_en = "Reaching Mullsjö takes at least one more hop. Sibbabo is the place closest to Mullsjö that can still hear Jönköping."
+
+[[wanted]]
+  name = "Gränna"
+  lat = 58.02025
+  lon = 14.46263
+  note = "Under gynnsamma förhållanden kan vi nå Hjo och Ödeshög, men för att få en stabil länk behöver vi minst en repeater på vägen."
+  note_en = "In good conditions we reach Hjo and Ödeshög, but a stable link needs at least one repeater on the way."
+
+[[wanted]]
+  name = "Visingsö"
+  lat = 58.03338
+  lon = 14.3239
+  note = "Hjälp oss att dra nytta av Vättern för att kunna länka ihop Västergötland, Östergötland, Närke och Jönköping."
+  note_en = "Help us use lake Vättern to link Västergötland, Östergötland, Närke and Jönköping."
+
+[[wanted]]
+  name = "Knaggebo"
+  lat = 57.86837
+  lon = 13.75817
+  note = "Den ultimata länken ut från Mullsjö är via Knaggebobacken, känner du någon som skulle kunna ge oss OK att sätta en repeater där skulle vi vara mycket tacksamma!"
+  note_en = "The best link out of Mullsjö is by the Knaggebo hill. If you know someone who could let us put a repeater there, we would be very grateful."
+
+[[wanted]]
+  name = "Tabergs topp"
+  lat = 57.67906
+  lon = 14.08131
+  note = "Tabergs topp har oslagbar utsikt i tre vädersträck, med en repeater där skulle man täcka in stora delar av norra Småland samtidigt om man länkar ihop Tabergsdalen med resten av Jönköping."
+  note_en = "The top of Taberg has an unbeatable view in three directions. A repeater there would cover large parts of northern Småland and link the Taberg valley to the rest of Jönköping."

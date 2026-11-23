@@ -105,7 +105,8 @@ async function shoot(job, again = false) {
     await page.setViewport({ width: job.width, height: job.height });
     await page.evaluateOnNewDocument(() => { try { localStorage.setItem("theme", "dark"); } catch { /* none */ } });
     if (process.env.DEBUG) { page.on("pageerror", (e) => console.log("pageerror", e.message)); page.on("requestfailed", (r) => console.log("failed", r.url().slice(0, 90))); page.on("response", (r) => { if (r.status() >= 400) console.log(r.status(), r.url().slice(0, 90)); }); page.on("console", (m) => console.log("console", m.text().slice(0, 200))); }
-    await page.goto(`${base}${job.url}?live=0&full=1`, { waitUntil: "domcontentloaded" });
+    // want=0: the pictures show the mesh, not the places wanted for new repeaters (shown from the start on a county's map).
+    await page.goto(`${base}${job.url}?live=0&full=1&want=0`, { waitUntil: "domcontentloaded" });
     await page.evaluate(() => document.getElementById("map").scrollIntoView());
     await page.waitForFunction(() => { const el = document.getElementById("map"); return el.mapgl?.getSource("nodes") && el.mapgl.getLayer("node-points"); }, { timeout: Number(process.env.WAIT || 60000) * (again ? 2 : 1) });
     await page.addStyleTag({ content: `.maplibregl-ctrl-top-right, .maplibregl-ctrl-top-left, .map-panel, .map-loading, .lan-tip, .site-header { display: none !important; }
