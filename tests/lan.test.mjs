@@ -10,6 +10,7 @@ const TOP = { scb: "s", slug: "s", short: "s", site: "s", checked: "d", iata: "s
 const TABLES = {
   channels: { name: "s", purpose: "s", purpose_en: "s", note: "s", note_en: "s" },
   groups: { name: "s", url: "s" },
+  communities: { name: "s", url: "s" },
   wanted: { name: "s", lat: "n", lon: "n", note: "s", note_en: "s" },
   regions_extra: { scope: "s", note: "s", note_en: "s", source: "s", group: "s" },
 };
@@ -67,6 +68,7 @@ export function checkCounty(file, c) {
   if (!c.checked) errs.push(`${file}: checked is missing`);
   if (c.site && !/^https:\/\/[^\s"]+\/$/.test(c.site)) errs.push(`${file}: site must be an https address ending in /`);
   if (c.community && !/^https:\/\/[^\s"]+$/.test(c.community.url)) errs.push(`${file}: community.url must be an https address`);
+  for (const m of c.communities || []) if (!m.name || !/^https:\/\/[^\s"]+$/.test(m.url || "")) errs.push(`${file}: a [[communities]] entry needs a name and an https url`);
   if (c.meshmapper && !/^https:\/\//.test(c.meshmapper)) errs.push(`${file}: meshmapper must be an https address`);
   if (c.text_by && !c.text) errs.push(`${file}: text_by without text`);
   if (c.naming?.source && !/^https:\/\//.test(c.naming.source)) errs.push(`${file}: naming.source must be an https address`);

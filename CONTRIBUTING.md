@@ -39,6 +39,10 @@ Listor, en per post:
   name = "#kalmar"
   purpose = "Länets chattkanal"
 
+[[communities]]       # fler gemenskapssidor för länet, utöver `community`: egna rader i Sverige-vyns Gemenskap-kolumn
+  name = "Gruppens namn"
+  url  = "https://…"
+
 [[groups]]            # grupper och chattar för länet
   name = "Gruppens namn"
   url  = "https://…"

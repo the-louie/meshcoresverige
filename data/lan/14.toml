@@ -14,3 +14,14 @@ naming  = { format = "SE-GOT-<Beskrivning>", format_en = "SE-GOT-<Description>",
 [[groups]]
   name = "GBG Mesh"
   url  = "https://gbg-mesh.se/"
+
+# MeshCore Östra Skaraborg: found by the operator 2026-11-23; an independent local group (Skövde, Hjo, Tidaholm,
+# Falköping, Tibro, Karlsborg). Its settings are the county's (se-vgr, EU/UK Narrow), read on its site 2026-11-23.
+[[groups]]
+  name = "MeshCore Östra Skaraborg"
+  url  = "https://meshcoreskaraborg.se/"
+
+# A second community site for the county, beside `community` in the Sverige view's Gemenskap column (operator 2026-11-23).
+[[communities]]
+  name = "MeshCore Östra Skaraborg"
+  url  = "https://meshcoreskaraborg.se/"
