@@ -8,7 +8,18 @@ site    = ""
 checked = 2026-11-16
 community = { name = "Linköping-Mesh", url = "https://linkoping-mesh.se/" }   # the county's community site, a button beside "Se kartan" (B-306)
 
-# Groups: surveyed 2026-11-18 from meshat.se Regionala sidor, the groups' own sites, ham club sites, the Sweden Mesh Discord invite page, Facebook group titles, GitHub, web search and MeshMapper scope names; 1 active MeshCore group(s) found.
+# Groups: surveyed 2026-11-18 from meshat.se Regionala sidor, the groups' own sites, ham club sites, the Sweden Mesh Discord invite page, Facebook group titles, GitHub, web search and MeshMapper scope names; 1 active MeshCore group(s) found; BBG-Mesh added 2026-11-25.
 [[groups]]
   name = "LKPG-Mesh"
   url  = "https://linkoping-mesh.se/"
+
+# BBG-Mesh: named by the operator 2026-11-25; a local MeshCore group in Borensberg (Motala kommun), read on its
+# site the same day.
+[[groups]]
+  name = "BBG-Mesh"
+  url  = "https://www.bbg-mesh.se/"
+
+# A second community site for the county, beside `community` in the Sverige view's Gemenskap column.
+[[communities]]
+  name = "BBG-Mesh"
+  url  = "https://www.bbg-mesh.se/"
