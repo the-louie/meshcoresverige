@@ -9,7 +9,7 @@ const SCB = ["01", "03", "04", "05", "06", "07", "08", "09", "10", "12", "13", "
 const TOP = { scb: "s", slug: "s", short: "s", site: "s", checked: "d", iata: "s", center: "a", zoom: "n", place: "s", meshmapper: "s", text: "s", text_en: "s", text_by: "s", community: "link", naming: "naming" };
 const TABLES = {
   channels: { name: "s", purpose: "s", purpose_en: "s", note: "s", note_en: "s" },
-  groups: { name: "s", url: "s" },
+  groups: { name: "s", url: "s", short: "s" },
   communities: { name: "s", url: "s" },
   wanted: { name: "s", lat: "n", lon: "n", note: "s", note_en: "s" },
   regions_extra: { scope: "s", note: "s", note_en: "s", source: "s", group: "s" },
