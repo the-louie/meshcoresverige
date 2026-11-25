@@ -22,4 +22,5 @@ naming  = { format = "SE[kommunkod]-[Plats]", example = "SE1780-KarlstadREP", fo
 
 [[groups]]
   name = "SK4AV Karlstads Sändaramatörer"
+  short = "SK4AV"   # the button's text on the county's front page (operator 2026-11-25)
   url  = "https://www.sk4av.se/"

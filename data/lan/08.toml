@@ -41,4 +41,5 @@ naming  = { format = "SE-{kommunförkortning}-{beskrivning}", example = "SE-KAM-
 
 [[groups]]
   name = "Ölands Radioamatörer SK7RN"
+  short = "SK7RN"   # the button's text on the county's front page (operator 2026-11-25)
   url  = "https://www.sk7rn.se/"
