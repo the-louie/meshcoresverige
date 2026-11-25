@@ -46,6 +46,7 @@ Listor, en per post:
 [[groups]]            # grupper och chattar för länet
   name = "Gruppens namn"
   url  = "https://…"
+  short = "Kort"      # valfritt: knappens text på länets förstasida, när namnet är långt
 
 [[regions_extra]]     # en lokal region som en grupp lägger till utöver länets, som en kommunregion
   scope  = "se0880"
